@@ -1,0 +1,45 @@
+#N canvas 96 137 811 357 10;
+#X obj 283 167 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 195 32 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 218 98 set 0;
+#X msg 211 75 set_length 4;
+#X msg 204 54 get_length;
+#X msg 226 120 get;
+#X obj 195 144 x37v-count 16;
+#X text 218 31 <- bang outputs and increments;
+#X text 294 53 <- outputs |length "the length"(;
+#X text 311 74 <- sets the length;
+#X text 260 97 <- sets the next count to output;
+#X text 260 117 <- outputs the current count;
+#X text 304 166 <- bang when we reach the last count (length - 1);
+#X obj 195 231 route length;
+#X floatatom 276 254 5 0 0 0 - - -;
+#X floatatom 195 254 5 0 0 0 - - -;
+#X obj 204 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 397 257 until;
+#X obj 397 303 print;
+#X obj 397 236 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 397 215 a "for" loop \, 0..7;
+#X text -139 175 output |length "the length"( on |get_length( ->;
+#X obj 397 280 x37v-count 8;
+#X text -127 6 x37v-count help: a counter by Alex Norman (http://x37v.info)
+;
+#X text -77 159 output current count on bang or get ->;
+#X connect 1 0 6 0;
+#X connect 2 0 6 0;
+#X connect 3 0 6 0;
+#X connect 4 0 6 0;
+#X connect 5 0 6 0;
+#X connect 6 0 13 0;
+#X connect 6 0 16 0;
+#X connect 6 1 0 0;
+#X connect 13 0 15 0;
+#X connect 13 1 14 0;
+#X connect 17 0 22 0;
+#X connect 19 0 17 0;
+#X connect 22 0 18 0;
+#X connect 22 1 17 1;

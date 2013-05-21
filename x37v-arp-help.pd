@@ -1,0 +1,71 @@
+#N canvas 0 15 999 695 10;
+#X obj 16 628 x37v-arp;
+#X obj 16 651 print;
+#X obj 16 -1 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 99 432 random 1;
+#X msg 28 31 list a b c d;
+#X msg 48 71 0 1 2 3 4;
+#X msg 70 135 pattern 0 0;
+#X msg 88 289 increment 1;
+#X msg 38 51 toast i j k;
+#X msg 79 156 pattern 0 1 0;
+#X text 185 107 |pattern ( messages [combined with the increment below]
+specify the pattern for which to read out the data.;
+#X text 187 227 A |pattern 0 0( with the arp data |a b c( and an |increment
+1( will give the output a a b b c c a a b b c c...;
+#X msg 93 310 increment 1 -1;
+#X msg 66 111 pattern 0;
+#X text 186 210 The default is |pattern 0(;
+#X text 41 -1 bang outputs the next element in the arpeggio.;
+#X msg 104 453 random 0;
+#X msg 97 500 random_increment 1;
+#X msg 103 523 random_increment 0;
+#X text 179 423 A |random( or |random 1( message will cause the pattern
+to be disregarded and for the data to be output randomly on a bang.
+|random 0( or a new |pattern( input will turn this behavior off.;
+#X text 253 499 A |random_increment( or |random_increment 1( message
+will cause the |increment( list to be disregarded and have the pattern
+applied to each element of the list in random order. This can be turned
+off by doing |random_increment 0( or by setting a new |increment( list.
+;
+#X text 665 1 |x37v-arp( by Alex Norman (http://x37v.info);
+#X text 126 44 A list or a message which has doesn't have a selector
+used by the arp [see below] specifies the data to arpeggiate.;
+#X text 186 139 The pattern indexes the arp data above \, 0 is the
+first element \, 1 is the second.. the indicies wrap. The pattern is
+applied to the arp data based on the increment [below] \, with the
+default increment the pattern is applied to each element consecutively.
+;
+#X text 211 285 The pattern is applied to each element in the arp data
+list. The increment defines how to move over the list. The default
+increment is 1 \, which means the pattern is evaluated for each element
+in the list consecutively. Increments can be negative. An |increment
+-1( would access the elements in the list in reverse order. |increment
+1 -1( would count up and then down. Some increments might cause elements
+in the list to never have the pattern applied to them.;
+#X text 252 571 As an example of this \, if you have the arp data |a
+b c( |random_increment( and |pattern 0 0( \, you'll get doubled outputs
+in random orders.. something like b \, b \, a \, a \, b \, b \, c \,
+c \, a \, a \, a \, a...;
+#X msg 85 581 reset;
+#X text 126 629 The |reset( message resets the pattern \, arp data
+offset and increment indexes so that the arpeggio starts from the beggining
+as if it had never been banged.;
+#X text 579 27 This is a user configurable arpeggiator which outputs
+its data based on input bangs. Requires pdlua.;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 12 0 0 0;
+#X connect 13 0 0 0;
+#X connect 16 0 0 0;
+#X connect 17 0 0 0;
+#X connect 18 0 0 0;
+#X connect 26 0 0 0;

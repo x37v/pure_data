@@ -1,0 +1,94 @@
+#N canvas 92 15 833 695 10;
+#X obj 141 154 x37v-tempo_tapper;
+#X obj 62 102 bng 15 250 50 0 empty empty empty 17 7 0 10 -4032 -1
+-1;
+#X floatatom 257 263 5 0 0 0 - - -;
+#X obj 257 241 /;
+#X obj 257 200 t b f;
+#X msg 257 221 60000;
+#X text 301 263 <- bpm;
+#X obj 141 231 metro;
+#X msg 141 207 1;
+#X msg 94 207 0;
+#X msg 94 258 set 0;
+#X obj 141 289 x37v-count 4;
+#X floatatom 141 310 5 0 0 0 - - -;
+#X obj 62 121 t b b;
+#X obj 141 430 vline~;
+#X obj 142 514 *~;
+#X obj 173 471 osc~ 440;
+#X obj 142 540 *~ 0.2;
+#X obj 184 521 hsl 128 15 0.001 0.5 1 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 143 568 dac~;
+#X obj 173 361 sel 0;
+#X obj 141 339 t b f;
+#X msg 173 382 880;
+#X msg 205 382 440;
+#X text 305 198 calc bpm [beat delay is in milliseconds];
+#X text 9 209 stop ->;
+#X msg 62 288 1;
+#X floatatom 257 181 5 0 0 0 - - -;
+#X obj 62 -16 keyname;
+#X obj 62 6 pack f s;
+#X obj 62 26 route 1;
+#X obj 62 47 route F5;
+#X msg 141 410 1 \, 0 15 15;
+#X msg 141 126 reset;
+#X text 188 124 <- reset the calculation \, or just wait 1 second after
+a bang input;
+#X text 371 -15 x37v-tempo_tapper help by Alex Norman (http://x37v.info/)
+;
+#X text 370 4 This abstraction accepts bangs on the input and \, after
+4 \, outputs the beat delay [in milliseconds] on the right outlet and
+then a bang 'in time' on its left output.;
+#X text 186 311 <- the beat number: 0..3;
+#X text 81 101 <- push this or hit F5 four times on the beat;
+#X text 244 364 <- create a tone on the beat \, the high tone is the
+first beat of the measure [assumes 4 beats per measure];
+#X text 370 51 There is a time-out \, so after 1 second \, if there
+is no bang on the input \, the beat counter is reset.;
+#X obj 188 340 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 207 340 <- beat indicator;
+#X connect 0 0 8 0;
+#X connect 0 1 7 1;
+#X connect 0 1 27 0;
+#X connect 1 0 13 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 1;
+#X connect 5 0 3 0;
+#X connect 7 0 11 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 9 0 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 21 0;
+#X connect 12 0 41 0;
+#X connect 13 0 0 0;
+#X connect 13 0 26 0;
+#X connect 13 1 9 0;
+#X connect 14 0 15 0;
+#X connect 15 0 17 0;
+#X connect 16 0 15 1;
+#X connect 17 0 19 0;
+#X connect 17 0 19 1;
+#X connect 18 0 17 1;
+#X connect 20 0 22 0;
+#X connect 20 1 23 0;
+#X connect 21 0 32 0;
+#X connect 21 1 20 0;
+#X connect 22 0 16 0;
+#X connect 23 0 16 0;
+#X connect 26 0 21 0;
+#X connect 27 0 4 0;
+#X connect 28 0 29 0;
+#X connect 28 1 29 1;
+#X connect 29 0 30 0;
+#X connect 30 0 31 0;
+#X connect 31 0 1 0;
+#X connect 32 0 14 0;
+#X connect 33 0 0 0;
+#X connect 33 0 9 0;
